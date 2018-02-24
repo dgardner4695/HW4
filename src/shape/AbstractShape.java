@@ -1,23 +1,24 @@
 package shape;
 
 
+import helpers.Color;
+
 public abstract class AbstractShape implements Shape {
 
   int x, y;
+  int appears = -1;
+  int disappears = -1;
   Color color;
+  String name;
 
   @Override
   public Color getColor() {
-    return color;
+    return this.color;
   }
 
   @Override
   public void setColor(Color c) {
     this.color.set(c);
-  }
-
-  public void setColor(double r, double g, double b) {
-    this.color.set(r, g, b);
   }
 
   @Override
@@ -38,5 +39,30 @@ public abstract class AbstractShape implements Shape {
   @Override
   public void setY(int newY) {
     this.y = newY;
+  }
+
+  @Override
+  public void setAppears(int newT) {
+    this.appears = newT;
+  }
+
+  @Override
+  public void setDisappears(int newT) {
+    this.disappears = newT;
+  }
+
+  @Override
+  public int getAppears() {
+    return this.appears;
+  }
+
+  @Override
+  public int getDisappears() {
+    return this.disappears;
+  }
+
+  @Override
+  public String getName() {
+    return this.name;
   }
 }

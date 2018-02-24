@@ -1,4 +1,4 @@
-package shape;
+package helpers;
 
 public class Color {
   private double r, g, b;

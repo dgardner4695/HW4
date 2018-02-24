@@ -1,13 +1,17 @@
 package shape;
 
+import helpers.Color;
+
 public class Ellipse extends AbstractShape {
 
   private double radius;
 
-  public Ellipse(int x,
+  public Ellipse(String name,
+                 int x,
                  int y,
                  int radius,
                  Color c) {
+    this.name = name;
     this.x = x;
     this.y = y;
     this.radius = radius;
@@ -23,8 +27,21 @@ public class Ellipse extends AbstractShape {
   }
 
   @Override
-  public void scale(double factor) {
+  public void scale(double factor) throws IllegalArgumentException {
+    if (factor <= 0) {
+      throw new IllegalArgumentException("Factor must be > 0");
+    }
     double newRadius = this.getRadius() * factor;
     setRadius(newRadius);
+  }
+
+  @Override
+  public String toString() {
+    return "ellipse";
+  }
+
+  @Override
+  public String getRefString() {
+    return "Center";
   }
 }

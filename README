@@ -1,0 +1,36 @@
+This README serves as an overview of my code for assignment 5. It will list each class/interface and describe the purpose of each.
+
+- PACKAGE: SHAPE -
+	Interface: Shape - This is the general interface I created for use with shapes. I put all of the methods I felt were relevant to shapes in this context in here.
+		I chose to use an Interface because I wanted new shapes to follow the same basic design principles, making it easier to add them.
+
+	Abstract Class: AbstractShape - I created an abstract class that implements the Shape Interface, where I defined all of the methods common to all shapes, regardless
+		of what specific subclass the Shape is. I left out methods that were subclass-specific, forcing them to be implemented in the subclasses themselves.
+
+	Classes: Rectangle, Ellipse - These are both concrete Shape classes that extend the AbstractShape class. There are a few specific fields in each, relevant to the specific
+		type of shape that is being represented.
+
+- PACKAGE: HELPERS -
+	Class: Color - A basic implementation of a color class, with getters and setters for rgb values. I chose this because it was nicer to look at than keeping track of each
+		individual RGB value of a given shape.
+
+- PACKAGE: ANIMATION -
+	Interface: Animation - This is the general interface for the AnimationModel class. It defines some basic methods I believed to be essential to creating an animation
+		given the assignment guidelines.
+
+	Class: AnimationModel - This is the meat of the Animation package. This contains a timeline list, and a map of names to objects involved with the animation. Events
+		are created using shapes and EventTypes, and added to the timeline. The timeline is sorted in order of the start time, which I accomplished by making the Event
+		class implement Comparable<Event>.
+
+	Interface: Event - Contains basic methods for accessing different fields and performing operations on an event.
+
+	AbstractClass: AbstractEvent - Again, there were several operations that were common between all event types, so I localized those into an abstract class that implements
+		the Event interface, similar to what was done with Shape.
+
+	Classes: MoveEvent, ResizeEvent, RecolorEvent - These are all concrete classes extending AbstractEvent, with specific fields relevant to each one, and different constructors.
+		I use an Enum to identify each event type, stored as a field in each event. They also each have their own toString() method, for ease of printing the timeline.
+
+
+The flow of logic is to create the AnimationModel, as well as any shapes you may wish to draw, using their constructors. Events can then be created individually, using each of the
+	specific event constructors, and added to the timeline of events using the addEvent() method. There is error checking that is done to make sure two of the same event types for
+	the same shape do not occur at the same time as well.
